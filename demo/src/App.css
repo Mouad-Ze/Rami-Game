@@ -2,6 +2,7 @@ body {
   background: radial-gradient(circle at top, #15304a, #060f18);
   color: white;
   font-family: 'Segoe UI', sans-serif;
+  padding: 10px;
 }
 
 .card {

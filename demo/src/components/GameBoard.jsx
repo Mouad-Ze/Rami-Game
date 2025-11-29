@@ -7,6 +7,7 @@ import { DragDropContext } from "@hello-pangea/dnd";
 import { createDeck } from "../logic/deck";
 import { aiTakeTurn } from "../logic/ai";
 import { canDeclareWin } from "../logic/declareWin";
+import { useNavigate } from "react-router-dom";
 
 export default function GameBoard() {
   const [players, setPlayers] = useState([]);
@@ -15,6 +16,7 @@ export default function GameBoard() {
   const [current, setCurrent] = useState(0);
   const [mustDiscard, setMustDiscard] = useState(false);
   const [melds, setMelds] = useState([]);
+const navigate = useNavigate();
 
   useEffect(() => {
     startGame();
@@ -134,6 +136,23 @@ export default function GameBoard() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <h2 style={{ color: "gold" }}> Rami</h2>
+<button
+  onClick={() => navigate("/rules")}
+  style={{
+    position: "absolute",
+    top: 20,
+    right: 20,
+    padding: "8px 14px",
+    background: "rgba(255, 215, 0, 0.9)",
+    border: "2px solid #543",
+    color: "#111",
+    borderRadius: 10,
+    cursor: "pointer",
+    fontWeight: "bold",
+  }}
+>
+  Rules
+</button>
 
       {players.slice(1).map(p => (
         <OpponentHand key={p.name} name={p.name} count={p.hand.length} />
